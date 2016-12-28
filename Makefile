@@ -78,6 +78,50 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/local/Cellar/cmake/3.6.1/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/local/Cellar/cmake/3.6.1/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/local/Cellar/cmake/3.6.1/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+
+.PHONY : install/strip/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/local/Cellar/cmake/3.6.1/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: install/local
+
+.PHONY : install/local/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/z3t0/dev/game/game/CMakeFiles /Users/z3t0/dev/game/game/CMakeFiles/progress.marks
@@ -111,6 +155,84 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named uninstall
+
+# Build rule for target.
+uninstall: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 uninstall
+.PHONY : uninstall
+
+# fast build rule for target.
+uninstall/fast:
+	$(MAKE) -f libraries/glfw/CMakeFiles/uninstall.dir/build.make libraries/glfw/CMakeFiles/uninstall.dir/build
+.PHONY : uninstall/fast
+
+#=============================================================================
+# Target rules for targets named glfw
+
+# Build rule for target.
+glfw: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 glfw
+.PHONY : glfw
+
+# fast build rule for target.
+glfw/fast:
+	$(MAKE) -f libraries/glfw/src/CMakeFiles/glfw.dir/build.make libraries/glfw/src/CMakeFiles/glfw.dir/build
+.PHONY : glfw/fast
+
+#=============================================================================
+# Target rules for targets named libglewmx_shared
+
+# Build rule for target.
+libglewmx_shared: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 libglewmx_shared
+.PHONY : libglewmx_shared
+
+# fast build rule for target.
+libglewmx_shared/fast:
+	$(MAKE) -f libraries/glew-cmake/CMakeFiles/libglewmx_shared.dir/build.make libraries/glew-cmake/CMakeFiles/libglewmx_shared.dir/build
+.PHONY : libglewmx_shared/fast
+
+#=============================================================================
+# Target rules for targets named libglew_shared
+
+# Build rule for target.
+libglew_shared: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 libglew_shared
+.PHONY : libglew_shared
+
+# fast build rule for target.
+libglew_shared/fast:
+	$(MAKE) -f libraries/glew-cmake/CMakeFiles/libglew_shared.dir/build.make libraries/glew-cmake/CMakeFiles/libglew_shared.dir/build
+.PHONY : libglew_shared/fast
+
+#=============================================================================
+# Target rules for targets named libglewmx_static
+
+# Build rule for target.
+libglewmx_static: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 libglewmx_static
+.PHONY : libglewmx_static
+
+# fast build rule for target.
+libglewmx_static/fast:
+	$(MAKE) -f libraries/glew-cmake/CMakeFiles/libglewmx_static.dir/build.make libraries/glew-cmake/CMakeFiles/libglewmx_static.dir/build
+.PHONY : libglewmx_static/fast
+
+#=============================================================================
+# Target rules for targets named libglew_static
+
+# Build rule for target.
+libglew_static: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 libglew_static
+.PHONY : libglew_static
+
+# fast build rule for target.
+libglew_static/fast:
+	$(MAKE) -f libraries/glew-cmake/CMakeFiles/libglew_static.dir/build.make libraries/glew-cmake/CMakeFiles/libglew_static.dir/build
+.PHONY : libglew_static/fast
+
+#=============================================================================
 # Target rules for targets named Game
 
 # Build rule for target.
@@ -120,7 +242,7 @@ Game: cmake_check_build_system
 
 # fast build rule for target.
 Game/fast:
-	$(MAKE) -f src/CMakeFiles/Game.dir/build.make src/CMakeFiles/Game.dir/build
+	$(MAKE) -f bin/CMakeFiles/Game.dir/build.make bin/CMakeFiles/Game.dir/build
 .PHONY : Game/fast
 
 # Help Target
@@ -131,6 +253,16 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... list_install_components"
+	@echo "... install"
+	@echo "... install/strip"
+	@echo "... install/local"
+	@echo "... uninstall"
+	@echo "... glfw"
+	@echo "... libglewmx_shared"
+	@echo "... libglew_shared"
+	@echo "... libglewmx_static"
+	@echo "... libglew_static"
 	@echo "... Game"
 .PHONY : help
 

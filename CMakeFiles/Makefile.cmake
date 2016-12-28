@@ -11,18 +11,35 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.6.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.6.1/CMakeSystem.cmake"
   "CMakeLists.txt"
+  "libraries/glew-cmake/CMakeLists.txt"
+  "libraries/glfw/CMake/modules/FindVulkan.cmake"
+  "libraries/glfw/CMakeLists.txt"
+  "libraries/glfw/cmake_uninstall.cmake.in"
+  "libraries/glfw/src/CMakeLists.txt"
+  "libraries/glfw/src/glfw3.pc.in"
+  "libraries/glfw/src/glfw3Config.cmake.in"
+  "libraries/glfw/src/glfw_config.h.in"
   "src/CMakeLists.txt"
+  "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/BasicConfigVersion-SameMajorVersion.cmake.in"
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/CMakeCInformation.cmake"
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/CMakeCXXInformation.cmake"
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/CMakeCommonLanguageInclude.cmake"
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/CMakeGenericSystem.cmake"
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/CMakeLanguageInformation.cmake"
+  "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/CMakePackageConfigHelpers.cmake"
+  "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/CMakeParseArguments.cmake"
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/CMakeSystemSpecificInformation.cmake"
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake"
+  "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/CheckIncludeFile.cmake"
+  "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/CheckLibraryExists.cmake"
+  "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/CheckSymbolExists.cmake"
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/Compiler/AppleClang-C.cmake"
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/Compiler/AppleClang-CXX.cmake"
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/Compiler/Clang.cmake"
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/Compiler/GNU.cmake"
+  "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/FindPackageHandleStandardArgs.cmake"
+  "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/FindPackageMessage.cmake"
+  "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/FindThreads.cmake"
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/Platform/Darwin-AppleClang-C.cmake"
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/Platform/Darwin-AppleClang-CXX.cmake"
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/Platform/Darwin-Clang-C.cmake"
@@ -31,6 +48,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/Platform/Darwin-Initialize.cmake"
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/Platform/Darwin.cmake"
   "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/Platform/UnixPaths.cmake"
+  "/usr/local/Cellar/cmake/3.6.1/share/cmake/Modules/WriteBasicConfigVersionFile.cmake"
   )
 
 # The corresponding makefile is:
@@ -42,10 +60,19 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
-  "src/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "libraries/glfw/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "libraries/glfw/src/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "libraries/glew-cmake/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "bin/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "src/CMakeFiles/Game.dir/DependInfo.cmake"
+  "libraries/glfw/CMakeFiles/uninstall.dir/DependInfo.cmake"
+  "libraries/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
+  "libraries/glew-cmake/CMakeFiles/libglewmx_shared.dir/DependInfo.cmake"
+  "libraries/glew-cmake/CMakeFiles/libglew_shared.dir/DependInfo.cmake"
+  "libraries/glew-cmake/CMakeFiles/libglewmx_static.dir/DependInfo.cmake"
+  "libraries/glew-cmake/CMakeFiles/libglew_static.dir/DependInfo.cmake"
+  "bin/CMakeFiles/Game.dir/DependInfo.cmake"
   )

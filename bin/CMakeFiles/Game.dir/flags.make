@@ -6,5 +6,5 @@ CXX_FLAGS =  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacO
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/src 
+CXX_INCLUDES = -I/Users/z3t0/dev/game/game/libraries/glfw/include -I/Users/z3t0/dev/game/game/libraries/glew-cmake/include -I/src 
 
