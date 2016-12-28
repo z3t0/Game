@@ -135,7 +135,7 @@ libraries/glfw/src/preinstall:
 libraries/glfw/src/CMakeFiles/glfw.dir/all:
 	$(MAKE) -f libraries/glfw/src/CMakeFiles/glfw.dir/build.make libraries/glfw/src/CMakeFiles/glfw.dir/depend
 	$(MAKE) -f libraries/glfw/src/CMakeFiles/glfw.dir/build.make libraries/glfw/src/CMakeFiles/glfw.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/z3t0/dev/game/game/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14,15,16 "Built target glfw"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/z3t0/dev/game/game/CMakeFiles --progress-num=4,5,6,7,8,9,10,11,12,13,14,15,16,17 "Built target glfw"
 .PHONY : libraries/glfw/src/CMakeFiles/glfw.dir/all
 
 # Include target in all.
@@ -196,7 +196,7 @@ libraries/glew-cmake/preinstall:
 libraries/glew-cmake/CMakeFiles/libglewmx_shared.dir/all:
 	$(MAKE) -f libraries/glew-cmake/CMakeFiles/libglewmx_shared.dir/build.make libraries/glew-cmake/CMakeFiles/libglewmx_shared.dir/depend
 	$(MAKE) -f libraries/glew-cmake/CMakeFiles/libglewmx_shared.dir/build.make libraries/glew-cmake/CMakeFiles/libglewmx_shared.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/z3t0/dev/game/game/CMakeFiles --progress-num=21,22 "Built target libglewmx_shared"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/z3t0/dev/game/game/CMakeFiles --progress-num=22,23 "Built target libglewmx_shared"
 .PHONY : libraries/glew-cmake/CMakeFiles/libglewmx_shared.dir/all
 
 # Include target in all.
@@ -233,7 +233,7 @@ clean: libraries/glew-cmake/CMakeFiles/libglewmx_shared.dir/clean
 libraries/glew-cmake/CMakeFiles/libglew_shared.dir/all:
 	$(MAKE) -f libraries/glew-cmake/CMakeFiles/libglew_shared.dir/build.make libraries/glew-cmake/CMakeFiles/libglew_shared.dir/depend
 	$(MAKE) -f libraries/glew-cmake/CMakeFiles/libglew_shared.dir/build.make libraries/glew-cmake/CMakeFiles/libglew_shared.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/z3t0/dev/game/game/CMakeFiles --progress-num=17,18 "Built target libglew_shared"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/z3t0/dev/game/game/CMakeFiles --progress-num=18,19 "Built target libglew_shared"
 .PHONY : libraries/glew-cmake/CMakeFiles/libglew_shared.dir/all
 
 # Include target in all.
@@ -270,7 +270,7 @@ clean: libraries/glew-cmake/CMakeFiles/libglew_shared.dir/clean
 libraries/glew-cmake/CMakeFiles/libglewmx_static.dir/all:
 	$(MAKE) -f libraries/glew-cmake/CMakeFiles/libglewmx_static.dir/build.make libraries/glew-cmake/CMakeFiles/libglewmx_static.dir/depend
 	$(MAKE) -f libraries/glew-cmake/CMakeFiles/libglewmx_static.dir/build.make libraries/glew-cmake/CMakeFiles/libglewmx_static.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/z3t0/dev/game/game/CMakeFiles --progress-num=23,24 "Built target libglewmx_static"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/z3t0/dev/game/game/CMakeFiles --progress-num=24,25 "Built target libglewmx_static"
 .PHONY : libraries/glew-cmake/CMakeFiles/libglewmx_static.dir/all
 
 # Include target in all.
@@ -307,7 +307,7 @@ clean: libraries/glew-cmake/CMakeFiles/libglewmx_static.dir/clean
 libraries/glew-cmake/CMakeFiles/libglew_static.dir/all:
 	$(MAKE) -f libraries/glew-cmake/CMakeFiles/libglew_static.dir/build.make libraries/glew-cmake/CMakeFiles/libglew_static.dir/depend
 	$(MAKE) -f libraries/glew-cmake/CMakeFiles/libglew_static.dir/build.make libraries/glew-cmake/CMakeFiles/libglew_static.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/z3t0/dev/game/game/CMakeFiles --progress-num=19,20 "Built target libglew_static"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/z3t0/dev/game/game/CMakeFiles --progress-num=20,21 "Built target libglew_static"
 .PHONY : libraries/glew-cmake/CMakeFiles/libglew_static.dir/all
 
 # Include target in all.
@@ -363,7 +363,7 @@ bin/CMakeFiles/Game.dir/all: libraries/glfw/src/CMakeFiles/glfw.dir/all
 bin/CMakeFiles/Game.dir/all: libraries/glew-cmake/CMakeFiles/libglew_static.dir/all
 	$(MAKE) -f bin/CMakeFiles/Game.dir/build.make bin/CMakeFiles/Game.dir/depend
 	$(MAKE) -f bin/CMakeFiles/Game.dir/build.make bin/CMakeFiles/Game.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/z3t0/dev/game/game/CMakeFiles --progress-num=1,2 "Built target Game"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/z3t0/dev/game/game/CMakeFiles --progress-num=1,2,3 "Built target Game"
 .PHONY : bin/CMakeFiles/Game.dir/all
 
 # Include target in all.
@@ -373,7 +373,7 @@ all: bin/CMakeFiles/Game.dir/all
 
 # Build rule for subdir invocation for target.
 bin/CMakeFiles/Game.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/z3t0/dev/game/game/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/z3t0/dev/game/game/CMakeFiles 19
 	$(MAKE) -f CMakeFiles/Makefile2 bin/CMakeFiles/Game.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/z3t0/dev/game/game/CMakeFiles 0
 .PHONY : bin/CMakeFiles/Game.dir/rule

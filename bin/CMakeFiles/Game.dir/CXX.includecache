@@ -6,6 +6,18 @@
 
 #IncludeRegexTransform: 
 
+/Users/z3t0/dev/game/game/src/GLutil.cpp
+GL/glew.h
+-
+GLFW/glfw3.h
+-
+GLutil.hpp
+/Users/z3t0/dev/game/game/src/GLutil.hpp
+GLutil.hpp
+/Users/z3t0/dev/game/game/src/GLutil.hpp
+
+/Users/z3t0/dev/game/game/src/GLutil.hpp
+
 /Users/z3t0/dev/game/game/src/main.cpp
 iostream
 -
@@ -13,6 +25,8 @@ GL/glew.h
 -
 GLFW/glfw3.h
 -
+GLutil.hpp
+/Users/z3t0/dev/game/game/src/GLutil.hpp
 
 libraries/glew-cmake/include/GL/glew.h
 stddef.h

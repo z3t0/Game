@@ -169,6 +169,33 @@ Game/fast:
 	cd /Users/z3t0/dev/game/game && $(MAKE) -f bin/CMakeFiles/Game.dir/build.make bin/CMakeFiles/Game.dir/build
 .PHONY : Game/fast
 
+GLutil.o: GLutil.cpp.o
+
+.PHONY : GLutil.o
+
+# target to build an object file
+GLutil.cpp.o:
+	cd /Users/z3t0/dev/game/game && $(MAKE) -f bin/CMakeFiles/Game.dir/build.make bin/CMakeFiles/Game.dir/GLutil.cpp.o
+.PHONY : GLutil.cpp.o
+
+GLutil.i: GLutil.cpp.i
+
+.PHONY : GLutil.i
+
+# target to preprocess a source file
+GLutil.cpp.i:
+	cd /Users/z3t0/dev/game/game && $(MAKE) -f bin/CMakeFiles/Game.dir/build.make bin/CMakeFiles/Game.dir/GLutil.cpp.i
+.PHONY : GLutil.cpp.i
+
+GLutil.s: GLutil.cpp.s
+
+.PHONY : GLutil.s
+
+# target to generate assembly for a file
+GLutil.cpp.s:
+	cd /Users/z3t0/dev/game/game && $(MAKE) -f bin/CMakeFiles/Game.dir/build.make bin/CMakeFiles/Game.dir/GLutil.cpp.s
+.PHONY : GLutil.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -209,6 +236,9 @@ help:
 	@echo "... install/local"
 	@echo "... edit_cache"
 	@echo "... Game"
+	@echo "... GLutil.o"
+	@echo "... GLutil.i"
+	@echo "... GLutil.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -15,5 +15,6 @@ add_subdirectory(libraries/glew-cmake)
 include_directories(libraries/glew-cmake/include)
 
 ## Source
+include_directories(src)
 add_subdirectory(src bin)
 

@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/z3t0/dev/game/game/src/GLutil.cpp" "/Users/z3t0/dev/game/game/bin/CMakeFiles/Game.dir/GLutil.cpp.o"
   "/Users/z3t0/dev/game/game/src/main.cpp" "/Users/z3t0/dev/game/game/bin/CMakeFiles/Game.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
@@ -12,7 +13,7 @@ set(CMAKE_CXX_COMPILER_ID "Clang")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "libraries/glfw/include"
   "libraries/glew-cmake/include"
-  "/src"
+  "src"
   )
 
 # Targets to which this target links.

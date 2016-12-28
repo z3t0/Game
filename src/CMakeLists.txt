@@ -1,4 +1,4 @@
-include_directories(${PROJECT_SRC_DIR}/src/)
+file(GLOB SOURCES *.cpp)
 
-add_executable(Game main.cpp)
+add_executable(Game ${SOURCES})
 target_link_libraries(Game glfw libglew_static)

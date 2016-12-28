@@ -8,6 +8,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include "GLutil.hpp"
+
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
 
@@ -55,9 +57,17 @@ int main () {
 
 	glViewport(0, 0, width, height);
 
+	glfwSetKeyCallback(window, key_callback);
+
 	while(!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
+
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		// Render here...
+
 		glfwSwapBuffers(window);
 	}
 
