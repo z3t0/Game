@@ -6,8 +6,6 @@
 
 #include "GLutil.hpp"
 
-#include "GLutil.hpp"
-
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
 	// Close when ESC is pressed
