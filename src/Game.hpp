@@ -13,12 +13,17 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include "GLUtil.hpp"
+
 class Game {
     
     public:
         Game(int window_width, int window_height, const char* title);
+        void init();
         void update();
+        void render();
         GLFWwindow* window;
+    
     
         int width;
         int height;

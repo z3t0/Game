@@ -6,12 +6,18 @@
 //
 //
 
-
-
 // Includes
 #include "Game.hpp"
 
 #include <iostream>
+
+GLfloat vertices[] = {
+    -0.5f, -0.5f, 0.0f,
+    0.5f, -0.5f, 0.0f,
+    0.0f,  0.5f, 0.0f
+};
+
+GLuint vbo;
 
 
 Game::Game(int window_width, int window_height, const char* title) {
@@ -53,8 +59,17 @@ Game::Game(int window_width, int window_height, const char* title) {
     glfwGetFramebufferSize(window, &width, &height);
     glViewport(0, 0, width, height);
     
+    init();
     
 
+}
+
+void Game::init() {
+    glGenBuffers(1, &vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    
+    GLuint vertex_shader = load_vertex_shader("basic.vert");
 }
 
 void Game::update () {
@@ -65,12 +80,16 @@ void Game::update () {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         
-        // Render here...
+        render();
         
         glfwSwapBuffers(window);
     }
 }
 
-void destroy() {
+void Game::render() {
+    
+}
+
+void Game::destroy() {
     glfwTerminate();
 }

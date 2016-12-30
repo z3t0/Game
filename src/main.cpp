@@ -4,6 +4,8 @@
 // Includes
 #include "Game.hpp"
 
+#include <iostream>
+
 // Defines
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
@@ -12,7 +14,7 @@
 int main() {
     
     Game game (WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE);
-    
+
     game.update();
     
     return 0;
