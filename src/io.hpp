@@ -13,5 +13,7 @@
 #include <fstream>
 
 std::string read_file(const char* path);
+void print(const char* s);
+void println(const char* s);
 
 #endif /* io_hpp */

@@ -16,6 +16,6 @@
 
 #include "io.hpp"
 
-GLuint load_vertex_shader(const char* path);
+GLuint load_shader(const char* path, GLenum shader_type);
 
 #endif /* GLUtil_hpp */

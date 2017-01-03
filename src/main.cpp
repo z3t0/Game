@@ -12,10 +12,11 @@
 #define WINDOW_TITLE "Game"
 
 int main() {
-    
+
     Game game (WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE);
 
+
     game.update();
-    
+
     return 0;
 }
