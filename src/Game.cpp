@@ -18,6 +18,8 @@ GLfloat vertices[] = {
 };
 
 GLuint vbo;
+GLuint vao;
+GLuint shader_program;
 
 Game::Game(int window_width, int window_height, const char* title) {
     std::cout << "Creating Game..." << std::endl;
@@ -61,46 +63,56 @@ Game::Game(int window_width, int window_height, const char* title) {
 }
 
 void Game::init() {
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	//vao
+	glGenVertexArrays(1, &vao);
+	glBindVertexArray(vao);
 
-    GLuint vertex_shader = load_shader("basic.vert", GL_VERTEX_SHADER);
-    GLuint fragment_shader = load_shader("basic.frag", GL_FRAGMENT_SHADER);
+	//vbo
+	glGenBuffers(1, &vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-		// TODO: error checking
-		GLuint shader_program = glCreateProgram();
-		glAttachShader(shader_program, vertex_shader);
-		glAttachShader(shader_program, fragment_shader);
-		glLinkProgram(shader_program);
-		glUseProgram(shader_program);
 
-		glDeleteShader(vertex_shader);
-		glDeleteShader(fragment_shader);
+	GLuint vertex_shader = load_shader("basic.vert", GL_VERTEX_SHADER);
+	GLuint fragment_shader = load_shader("basic.frag", GL_FRAGMENT_SHADER);
 
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*) 0);
-		glEnableVertexAttribArray(0);
+	// TODO: error checking
+	shader_program = glCreateProgram();
+	glAttachShader(shader_program, vertex_shader);
+	glAttachShader(shader_program, fragment_shader);
+	glLinkProgram(shader_program);
+	glUseProgram(shader_program);
+
+	glDeleteShader(vertex_shader);
+	glDeleteShader(fragment_shader);
+
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*) 0);
+	glEnableVertexAttribArray(0);
+	glBindVertexArray(0);
 
 }
 
 void Game::update () {
-    while(!glfwWindowShouldClose(window))
-    {
-        glfwPollEvents();
+	while(!glfwWindowShouldClose(window))
+	{
+		glfwPollEvents();
 
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
 
-        render();
+		render();
 
-        glfwSwapBuffers(window);
-    }
+		glfwSwapBuffers(window);
+	}
 }
 
 void Game::render() {
-
+	glUseProgram(shader_program);
+	glBindVertexArray(vao);
+	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glBindVertexArray(0);
 }
 
 void Game::destroy() {
-    glfwTerminate();
+	glfwTerminate();
 }
