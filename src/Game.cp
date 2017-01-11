@@ -143,7 +143,7 @@ void Game::render() {
 //     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_DYNAMIC_DRAW);
     
      glBindVertexArray(vao);
-     glDrawElements(GL_POLYGON, 12, GL_UNSIGNED_INT, 0);
+//     glDrawElements(GL_POLYGON, 12, GL_UNSIGNED_INT, 0);
 	 glUseProgram(shader_program);
 //	 glDrawArrays(GL_TRIANGLES, 0, 3);
 	 glBindVertexArray(0);

@@ -9,6 +9,21 @@
 #ifndef MeshData_hpp
 #define MeshData_hpp
 
-#include <stdio.h>
+#define GLEW_STATIC
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
+#include <vector>
+
+class MeshData {
+    
+public:
+    std::vector<GLfloat> vertices;
+    std::vector<GLuint> indices;
+    GLuint vert_count = 0;
+    
+    void addVertex(float x, float y, float z);
+    void addIndices();
+};
 
 #endif /* MeshData_hpp */
