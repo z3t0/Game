@@ -26,5 +26,4 @@ void MeshData::addIndices() {
     indices.push_back(vert_count - 3);
     indices.push_back(vert_count - 2);
     indices.push_back(vert_count - 1);
-  
 }

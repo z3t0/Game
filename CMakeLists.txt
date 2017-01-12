@@ -15,5 +15,8 @@ include_directories(libraries/glfw/include)
 add_subdirectory(libraries/glew-cmake)
 include_directories(libraries/glew-cmake/include)
 
+### GLM
+include_directories(libraries/glm)
+
 ## Source
 add_subdirectory(src bin)

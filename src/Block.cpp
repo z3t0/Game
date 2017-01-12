@@ -23,11 +23,11 @@ void Block::buildMesh(MeshData &mesh_data) {
     println("Building Mesh Data...");
     
     // Up
-//    mesh_data.addVertex(x - 0.5f, y + 0.5f, z + 0.5f);
-//    mesh_data.addVertex(x + 0.5f, y + 0.5f, z + 0.5f);
-//    mesh_data.addVertex(x + 0.5f, y + 0.5f, z - 0.5f);
-//    mesh_data.addVertex(x - 0.5f, y + 0.5f, z - 0.5f);
-//    mesh_data.addIndices();
+    mesh_data.addVertex(x - 0.5f, y + 0.5f, z + 0.5f);
+    mesh_data.addVertex(x + 0.5f, y + 0.5f, z + 0.5f);
+    mesh_data.addVertex(x + 0.5f, y + 0.5f, z - 0.5f);
+    mesh_data.addVertex(x - 0.5f, y + 0.5f, z - 0.5f);
+    mesh_data.addIndices();
     
     // Down
     
@@ -38,24 +38,12 @@ void Block::buildMesh(MeshData &mesh_data) {
     // Front
     
     // Back
-//    mesh_data.addVertex(x - 0.5, y + 0.5, z + 0.5);
-//    mesh_data.addVertex(x + 0.5, y - 0.5, z + 0.5);
-//    mesh_data.addVertex(x + 0.5, y + 0.5, z + 0.5);
-//    mesh_data.addVertex(x - 0.5, y - 0.5, z + 0.5);
-    
-      // 0, 2, 1
-      // 3, 2, 1
       mesh_data.addVertex(x - 0.5, y + 0.5, z + 0.5);
       mesh_data.addVertex(x + 0.5, y + 0.5, z + 0.5);
       mesh_data.addVertex(x + 0.5, y - 0.5, z + 0.5);
       mesh_data.addVertex(x - 0.5, y - 0.5, z + 0.5);
     
       mesh_data.addIndices();
-    
-    // repeated
-//    mesh_data.addVertex(x + 0.5, y - 0.5, z + 0.5);
-//    mesh_data.addVertex(x - 0.5, y + 0.5, z + 0.5);
-    
     
 //    mesh_data.addVertex(x - 0.5f, y - 0.5f, z + 0.5f);  // 0
 //    mesh_data.addVertex(x + 0.5f, y - 0.5f, z + 0.5f);    // 3
