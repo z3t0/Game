@@ -20,36 +20,52 @@ void Block::setType(BlockType block_type) {
 }
 
 void Block::buildMesh(MeshData &mesh_data) {
-    println("Building Mesh Data...");
     
     // Up
     mesh_data.addVertex(x - 0.5f, y + 0.5f, z + 0.5f);
     mesh_data.addVertex(x + 0.5f, y + 0.5f, z + 0.5f);
     mesh_data.addVertex(x + 0.5f, y + 0.5f, z - 0.5f);
     mesh_data.addVertex(x - 0.5f, y + 0.5f, z - 0.5f);
+    
     mesh_data.addIndices();
     
     // Down
+    mesh_data.addVertex(x - 0.5f, y - 0.5f, z + 0.5f);
+    mesh_data.addVertex(x + 0.5f, y - 0.5f, z + 0.5f);
+    mesh_data.addVertex(x + 0.5f, y - 0.5f, z - 0.5f);
+    mesh_data.addVertex(x - 0.5f, y - 0.5f, z - 0.5f);
+    
+    mesh_data.addIndices();
     
     // Left
+    mesh_data.addVertex(x - 0.5f, y - 0.5f, z + 0.5f);
+    mesh_data.addVertex(x - 0.5f, y + 0.5f, z + 0.5f);
+    mesh_data.addVertex(x - 0.5f, y + 0.5f, z - 0.5f);
+    mesh_data.addVertex(x - 0.5f, y - 0.5f, z - 0.5f);
+    
+    mesh_data.addIndices();
     
     // Right
+    mesh_data.addVertex(x + 0.5f, y - 0.5f, z + 0.5f);
+    mesh_data.addVertex(x + 0.5f, y + 0.5f, z + 0.5f);
+    mesh_data.addVertex(x + 0.5f, y + 0.5f, z - 0.5f);
+    mesh_data.addVertex(x + 0.5f, y - 0.5f, z - 0.5f);
+
     
     // Front
+    mesh_data.addVertex(x - 0.5, y + 0.5, z - 0.5);
+    mesh_data.addVertex(x + 0.5, y + 0.5, z - 0.5);
+    mesh_data.addVertex(x + 0.5, y - 0.5, z - 0.5);
+    mesh_data.addVertex(x - 0.5, y - 0.5, z - 0.5);
+    
+    mesh_data.addIndices();
     
     // Back
-      mesh_data.addVertex(x - 0.5, y + 0.5, z + 0.5);
-      mesh_data.addVertex(x + 0.5, y + 0.5, z + 0.5);
-      mesh_data.addVertex(x + 0.5, y - 0.5, z + 0.5);
-      mesh_data.addVertex(x - 0.5, y - 0.5, z + 0.5);
+    mesh_data.addVertex(x - 0.5, y + 0.5, z + 0.5);
+    mesh_data.addVertex(x + 0.5, y + 0.5, z + 0.5);
+    mesh_data.addVertex(x + 0.5, y - 0.5, z + 0.5);
+    mesh_data.addVertex(x - 0.5, y - 0.5, z + 0.5);
     
-      mesh_data.addIndices();
-    
-//    mesh_data.addVertex(x - 0.5f, y - 0.5f, z + 0.5f);  // 0
-//    mesh_data.addVertex(x + 0.5f, y - 0.5f, z + 0.5f);    // 3
-//
-//    mesh_data.addVertex(x - 0.5f, y + 0.5f, z + 0.5f);  // 1
-//    mesh_data.addVertex(x + 0.5f, y + 0.5f, z + 0.5f);  // 2
-//    mesh_data.addIndices();
+    mesh_data.addIndices();
 
 }

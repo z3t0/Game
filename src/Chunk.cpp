@@ -5,18 +5,19 @@ int Flat(int x, int y, int z) {
 
 }
 
-Chunk::Chunk() {
+Chunk::Chunk(int px, int py, int pz) {
 	// Create the blocks
-    for (int x = 0; x < CHUNK_SIZE; x++) {
-        for (int y = 0; y < CHUNK_SIZE; y++) {
-            for (int z = 0; z < CHUNK_SIZE; z++) {
+    for (int x = px; x < px + CHUNK_SIZE; x++) {
+        for (int y = py; y < py + CHUNK_SIZE; y++) {
+            for (int z = pz; z < pz + CHUNK_SIZE; z++) {
                 blocks.push_back(Block(x, y, z));
             }
         }
     }
-    
-    blocks[Flat(0, 0, -3)].setType(BlockType_Stone);
-    
+   
+    x = px;
+    y = py;
+    z = pz;
     
 	rebuild = true;
 }

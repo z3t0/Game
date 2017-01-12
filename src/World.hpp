@@ -5,6 +5,8 @@
 #include "io.hpp"
 #include "MeshData.hpp"
 
+#include <vector>
+
 class World {
 
 	public:
@@ -12,7 +14,11 @@ class World {
 		void update();
 		void render();
         MeshData mesh_data;
-		Chunk chunk;
+        std::vector <Chunk> chunks;
+    
+    
 };
+
+static int CHUNK_LENGTH = 4;
 
 #endif

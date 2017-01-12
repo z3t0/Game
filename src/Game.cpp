@@ -11,6 +11,70 @@
 
 #include <iostream>
 
+GLfloat rotationX = 0;
+GLfloat rotationY = 0;
+GLfloat rotationZ = 0;
+
+int keyState[4] = {0 , 0, 0, 0};
+float speed = 0.1;
+
+void key_up(int action) {
+    if (action == GLFW_PRESS || keyState[0] == 1) {
+        keyState[0] = 1;
+        rotationX += speed;
+    }
+    
+    else
+        keyState[0] = 0;
+}
+
+void key_down(int action) {
+    if (action == GLFW_PRESS || keyState[1] == 1) {
+        keyState[1] = 1;
+        rotationX -= speed;
+    }
+    
+    else
+        keyState[1] = 0;}
+
+void key_left(int action) {
+    if (action == GLFW_PRESS || keyState[2] == 1) {
+        keyState[2] = 1;
+        rotationZ += speed;
+    }
+    
+    else
+        keyState[2] = 0;}
+
+void key_right(int action) {
+    if (action == GLFW_PRESS || keyState[3] == 1) {
+        keyState[3] = 1;
+        rotationY += speed;
+    }
+    
+    else
+        keyState[3] = 0;
+}
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_UP)
+        key_up(action);
+    
+    if(key == GLFW_KEY_DOWN)
+        key_down(action);
+    
+    if(key == GLFW_KEY_LEFT)
+        key_left(action);
+    
+    if(key == GLFW_KEY_RIGHT)
+        key_right(action);
+}
+
+
+// Variables
+
+
 GLfloat vertices[] = {
     0.5f,  0.5f, 0.0f,  // Top Right
     0.5f, -0.5f, 0.0f,  // Bottom Right
@@ -28,10 +92,13 @@ GLuint vao;
 GLuint ebo;
 GLuint shader_program;
 
-Game::Game(int window_width, int window_height, const char* title) {
+Game::Game(int ww, int wh, const char* title) {
     std::cout << "Creating Game..." << std::endl;
     
     // GLFW
+    
+    window_width = ww;
+    window_height = wh;
     
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -53,6 +120,7 @@ Game::Game(int window_width, int window_height, const char* title) {
     }
     
     glfwMakeContextCurrent(window);
+    glfwSetKeyCallback(window, key_callback);
     
     // Initialize GLEW
     glewExperimental = GL_TRUE;
@@ -65,6 +133,11 @@ Game::Game(int window_width, int window_height, const char* title) {
     // Get and Set Viewport Dimensions
     glfwGetFramebufferSize(window, &width, &height);
     glViewport(0, 0, width, height);
+    
+//    glEnable(GL_DEPTH_TEST); // Depth Testing
+//    glDepthFunc(GL_LEQUAL);
+//    glDisable(GL_CULL_FACE);
+//    glCullFace(GL_BACK);
     
     init();
 }
@@ -117,6 +190,7 @@ void Game::init() {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
     
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 }
 
 void Game::update () {
@@ -136,23 +210,40 @@ void Game::update () {
     
 }
 
-GLfloat rotation = 0;
-
 void Game::render() {
-    glm::vec4 vec(0.0f, 0.0f, 0.0f, 1.0f);
-    glm::mat4 trans;
-    trans = glm::rotate(trans, rotation, glm::vec3(1.0, 1.0, 1.0));
-    vec = trans * vec;
-    std::cout << vec.x << vec.y << vec.z << std::endl;
-    
-    rotation +=0.01;
-    
-    GLuint transformLoc = glGetUniformLocation(shader_program, "transform");
-    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
     
     glUseProgram(shader_program);
+
+    glm::mat4 model;
+    glm::mat4 view;
+    glm::mat4 projection;
+    
+//    model = glm::rotate(model, rotationX, glm::vec3(1, 1, 1.0));
+//    model = glm::translate(model, glm::vec3(0, rotationX, rotationY));
+     model = glm::rotate(model, rotationX, glm::vec3(1.0f, 0.0f, 0.0f));
+     model = glm::rotate(model, rotationY, glm::vec3(0.0f, 1.0f, 0.0f));
+     model = glm::rotate(model, rotationZ, glm::vec3(0.0f, 0.0f, 1.0f));
+
+//    model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
+//    model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
+//    model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
+    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -10.0f));
+    projection = glm::perspective(45.0f, (GLfloat)window_width / (GLfloat)window_height, 0.1f, 100.0f);
+    
+    // Get their uniform location
+    GLint modelLoc = glGetUniformLocation(shader_program, "model");
+    GLint viewLoc = glGetUniformLocation(shader_program, "view");
+    GLint projLoc = glGetUniformLocation(shader_program, "projection");
+    
+    // Pass them to the shaders
+    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+    glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+    // Note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
+    glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
+    
+    
     glBindVertexArray(vao);
-    glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, world.mesh_data.indices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 }
 

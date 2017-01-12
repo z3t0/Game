@@ -33,6 +33,8 @@ class Game {
 
 		int width;
 		int height;
+        int window_width;
+        int window_height;
 		void destroy();
         World world;
 

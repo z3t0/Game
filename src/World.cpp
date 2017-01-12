@@ -1,15 +1,53 @@
 #include "World.hpp"
 
- World::World() { 
-     chunk.setBlock(0,0,0, BlockType_Stone);
- } 
+int FlatWorld(int x, int y, int z) {
+    return (x + CHUNK_LENGTH * (y + CHUNK_LENGTH * z));
+    
+}
+
+ World::World() {
+     // Set up Chunks
+     for (int x = 0; x < CHUNK_LENGTH; x++) {
+         for (int y = 0; y < CHUNK_LENGTH; y++) {
+             for (int z = 0; z < CHUNK_LENGTH; z++) {
+                 
+                 chunks.push_back(Chunk(x, y, z));
+                 
+             }
+         }
+     }
+     
+     chunks[FlatWorld(0,0,0)].setBlock(0, 0, 0, BlockType_Stone);
+     
+//     for (int x = 0; x < 16; x++) {
+//         for (int y = 0; y < 16; y++) {
+//             for (int z = 0; z < 16; z++) {
+//                 
+//                 chunk.setBlock(x,y,z, BlockType_Stone);
+//             }
+//         }
+//     }
+//     chunk.setBlock(0,0,0, BlockType_Stone);
+ }
 
 void World::update() {
     
-	if(chunk.rebuild) {
-		println("Need to rebuild mesh");
-        chunk.buildMesh();
-        mesh_data = chunk.mesh_data;
+    
+    for (int x = 0; x < CHUNK_LENGTH; x++) {
+        for (int y = 0; y < CHUNK_LENGTH; y++) {
+            for (int z = 0; z < CHUNK_LENGTH; z++) {
+                
+                auto chunk = chunks[FlatWorld(x, y, z)];
+                
+                if(chunk.rebuild) {
+                    chunk.buildMesh();
+                    mesh_data.vertices.insert(mesh_data.vertices.end(), chunk.mesh_data.vertices.begin(), chunk.mesh_data.vertices.end());
+                    mesh_data.indices.insert(mesh_data.indices.end(), chunk.mesh_data.indices.begin(), chunk.mesh_data.indices.end());
+                    mesh_data.vert_count += chunk.mesh_data.vert_count;
+                }
+                
+            }
+        }
     }
 
 }

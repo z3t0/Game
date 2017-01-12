@@ -23,3 +23,4 @@ void print(const char* s) {
 void println(const char* s) {
 	std::cout << s << std::endl;
 }
+
