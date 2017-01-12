@@ -44,4 +44,6 @@ void Chunk::buildMesh() {
 
 void Chunk::setBlock(int x, int y, int z, BlockType block_type) {
     blocks[(Flat(x, y, z))].setType(block_type);
+    
+    rebuild = true;
 }

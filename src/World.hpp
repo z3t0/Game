@@ -1,21 +1,25 @@
 #ifndef WORLD_HPP
 #define WORLD_HPP
 
+#include <vector>
+
 #include "Chunk.hpp"
 #include "io.hpp"
 #include "MeshData.hpp"
+#include "Player.hpp"
 
-#include <vector>
+class Game;
 
 class World {
 
 	public:
-        World();
+        World(Game *game_reference);
 		void update();
 		void render();
         MeshData mesh_data;
         std::vector <Chunk> chunks;
-    
+        Player player;
+        Game *game;
     
 };
 

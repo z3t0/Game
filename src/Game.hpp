@@ -20,6 +20,8 @@
 #include "GLUtil.hpp"
 #include "World.hpp"
 
+#include "Player.hpp"
+
 
 class Game {
 
@@ -37,7 +39,9 @@ class Game {
         int window_height;
 		void destroy();
         World world;
-
+    
+    
 };
+
 
 #endif /* Game_hpp */

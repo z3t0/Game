@@ -5,7 +5,10 @@ int FlatWorld(int x, int y, int z) {
     
 }
 
- World::World() {
+World::World(Game *game_reference) : player("Player 1", this) {
+     
+    game = game_reference;
+    
      // Set up Chunks
      for (int x = 0; x < CHUNK_LENGTH; x++) {
          for (int y = 0; y < CHUNK_LENGTH; y++) {
@@ -19,19 +22,9 @@ int FlatWorld(int x, int y, int z) {
      
      chunks[FlatWorld(0,0,0)].setBlock(0, 0, 0, BlockType_Stone);
      
-//     for (int x = 0; x < 16; x++) {
-//         for (int y = 0; y < 16; y++) {
-//             for (int z = 0; z < 16; z++) {
-//                 
-//                 chunk.setBlock(x,y,z, BlockType_Stone);
-//             }
-//         }
-//     }
-//     chunk.setBlock(0,0,0, BlockType_Stone);
  }
 
 void World::update() {
-    
     
     for (int x = 0; x < CHUNK_LENGTH; x++) {
         for (int y = 0; y < CHUNK_LENGTH; y++) {

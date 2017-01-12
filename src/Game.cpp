@@ -11,67 +11,45 @@
 
 #include <iostream>
 
-GLfloat rotationX = 0;
-GLfloat rotationY = 0;
-GLfloat rotationZ = 0;
 
-int keyState[4] = {0 , 0, 0, 0};
-float speed = 0.1;
+// Deltatime
+GLfloat deltaTime;
+GLfloat lastFrame = 0.0f;  	// Time of last frame
 
-void key_up(int action) {
-    if (action == GLFW_PRESS || keyState[0] == 1) {
-        keyState[0] = 1;
-        rotationX += speed;
-    }
-    
-    else
-        keyState[0] = 0;
-}
 
-void key_down(int action) {
-    if (action == GLFW_PRESS || keyState[1] == 1) {
-        keyState[1] = 1;
-        rotationX -= speed;
-    }
-    
-    else
-        keyState[1] = 0;}
+glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  3.0f);
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f);
 
-void key_left(int action) {
-    if (action == GLFW_PRESS || keyState[2] == 1) {
-        keyState[2] = 1;
-        rotationZ += speed;
-    }
-    
-    else
-        keyState[2] = 0;}
+bool keys[1024];
 
-void key_right(int action) {
-    if (action == GLFW_PRESS || keyState[3] == 1) {
-        keyState[3] = 1;
-        rotationY += speed;
-    }
-    
-    else
-        keyState[3] = 0;
-}
-
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+// Is called whenever a key is pressed/released via GLFW
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
-    if (key == GLFW_KEY_UP)
-        key_up(action);
-    
-    if(key == GLFW_KEY_DOWN)
-        key_down(action);
-    
-    if(key == GLFW_KEY_LEFT)
-        key_left(action);
-    
-    if(key == GLFW_KEY_RIGHT)
-        key_right(action);
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, GL_TRUE);
+    if (key >= 0 && key < 1024)
+    {
+        if (action == GLFW_PRESS)
+            keys[key] = true;
+        else if (action == GLFW_RELEASE)
+            keys[key] = false;
+    }
 }
 
-
+void do_movement()
+{
+    // Camera controlsw
+    GLfloat cameraSpeed = 5.0f * deltaTime;
+    if (keys[GLFW_KEY_W])
+        cameraPos += cameraSpeed * cameraFront;
+    if (keys[GLFW_KEY_S])
+        cameraPos -= cameraSpeed * cameraFront;
+    if (keys[GLFW_KEY_A])
+        cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+    if (keys[GLFW_KEY_D])
+        cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+}
 // Variables
 
 
@@ -92,7 +70,7 @@ GLuint vao;
 GLuint ebo;
 GLuint shader_program;
 
-Game::Game(int ww, int wh, const char* title) {
+Game::Game(int ww, int wh, const char* title) : world(this) {
     std::cout << "Creating Game..." << std::endl;
     
     // GLFW
@@ -196,8 +174,14 @@ void Game::init() {
 void Game::update () {
     while(!glfwWindowShouldClose(window))
     {
+        // Calculate deltatime of current frame
+        GLfloat currentFrame = glfwGetTime();
+        deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
+
         world.update();
         glfwPollEvents();
+        do_movement();
         
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -213,21 +197,14 @@ void Game::update () {
 void Game::render() {
     
     glUseProgram(shader_program);
-
-    glm::mat4 model;
-    glm::mat4 view;
-    glm::mat4 projection;
     
-//    model = glm::rotate(model, rotationX, glm::vec3(1, 1, 1.0));
-//    model = glm::translate(model, glm::vec3(0, rotationX, rotationY));
-     model = glm::rotate(model, rotationX, glm::vec3(1.0f, 0.0f, 0.0f));
-     model = glm::rotate(model, rotationY, glm::vec3(0.0f, 1.0f, 0.0f));
-     model = glm::rotate(model, rotationZ, glm::vec3(0.0f, 0.0f, 1.0f));
+    glm::mat4 model;
+    
+    glm::mat4 projection;
 
-//    model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
-//    model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
-//    model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
-    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -10.0f));
+    glm::mat4 view;
+    view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+
     projection = glm::perspective(45.0f, (GLfloat)window_width / (GLfloat)window_height, 0.1f, 100.0f);
     
     // Get their uniform location
